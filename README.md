@@ -15,6 +15,8 @@ Custom bindings are commented in the config headers [config.def.h](config.def.h)
  - nametag: allow custom text to be appended to tag numbers `super + n`
  - fullscreen: force a window to go fullscreen and hide the statusbar `super + f`
  - systray: a system tray implementation in dwm
+ - bottomstack: a horizontal stack layout `super + shift + t`
+ - fadeinactive: fades inactive window by reducing opacity
 
 ## Requirements
 In order to build dwm you need the Xlib header files. There should be available in your distribution's xorg package.

@@ -10,6 +10,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
+static const double activeopacity   = 1.0f;     /* Window opacity when it's focused (0 <= opacity <= 1) */
+static const double inactiveopacity = 0.85f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#222222";
@@ -55,7 +57,7 @@ static const Layout layouts[] = {
 };
 
 
-#include <X11/XF86keysym.h>
+#include <X11/XF86keysym.h> /* for function key bindings */
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -132,11 +134,11 @@ static Key keys[] = {
 	TAGKEYS(                       		 XK_9,     		                                          8)
 	{ MODKEY|ShiftMask,            		 XK_q,     		                          quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask,		 XK_q,     		                          quit,           {1} },
-	{ MODKEY,		  		                 XK_q,			                            killclient,	{0} },
-	{ MODKEY,				                   XK_n,			                            nametag,	{0} },
-	{ 0,                               XF86XK_AudioMute,		                  spawn,		SHCMD("pamixer -t") },
-	{ 0,                               XF86XK_AudioRaiseVolume,              	spawn,		SHCMD("pamixer --allow-boost -i 3") },
-	{ 0,                               XF86XK_AudioLowerVolume,              	spawn,		SHCMD("pamixer --allow-boost -d 3") },
+	{ MODKEY,		  		                 XK_q,			                            killclient,	{0} }, /* quit window */
+	{ MODKEY,				                   XK_n,			                            nametag,	{0} }, /* apply name to current tag */
+	{ 0,                               XF86XK_AudioMute,		                  spawn,		SHCMD("pamixer -t") }, /* mute */
+	{ 0,                               XF86XK_AudioRaiseVolume,              	spawn,		SHCMD("pamixer --allow-boost -i 3") }, /* vol up */
+	{ 0,                               XF86XK_AudioLowerVolume,              	spawn,		SHCMD("pamixer --allow-boost -d 3") }, /* vol down */
 };
 
 /* button definitions */
