@@ -8,6 +8,8 @@ Custom bindings are commented in the config headers [config.def.h](config.def.h)
 
 ## Patches 
 
+All patches applied to this build are stored in /patch
+
  - pertag: allow setting different layouts for unique tags
  - restartsig: kill & restart dwm without logging out - useful post compilation. `super + ctrl + shift + q`
  - sticky: set a window as sticky to all tags `super + s`
@@ -19,6 +21,8 @@ Custom bindings are commented in the config headers [config.def.h](config.def.h)
  - fadeinactive: fades inactive window by reducing opacity
  - hide\_vacant\_tags: hide tags with no windows for a cleaner bar
  - stacker: utilities to  manage the client stack. `super` for push operations and `super+shift` for focus operations
+ - scratchpad: spawn a floating terminal over any window with `super + shift + enter`
+
 
 ## Requirements
 In order to build dwm you need the Xlib header files. There should be available in your distribution's xorg package.
