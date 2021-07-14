@@ -1,12 +1,11 @@
 --- dwm.c
 +++ dwm.c
-@@ -565,6 +566,9 @@ configurenotify(XEvent *e)
- 			drw_resize(drw, sw, bh);
- 			updatebars();
- 			for (m = mons; m; m = m->next) {
-+				for (c = m->clients; c; c = c->next)
-+					if (c->isfullscreen)
-+						resizeclient(c, m->mx, m->my, m->mw, m->mh);
- 				XMoveResizeWindow(dpy, m->barwin, m->wx, m->by, m->ww, bh);
- 			}
- 			focus(NULL);
+@@ -233,6 +233,8 @@ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
++static void bstack(Monitor *m);
++static void bstackhoriz(Monitor *m);
+ 
+ /* variables */
+ static const char broken[] = "broken";
