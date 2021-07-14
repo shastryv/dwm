@@ -125,6 +125,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY,			XK_q,		killclient,	{0} },
+	{ MODKEY,			XK_n,		nametag,	{0} },
 };
 
 /* button definitions */
