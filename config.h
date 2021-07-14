@@ -1,5 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+
 /* appearance */
 static unsigned int borderpx  = 1;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
@@ -81,7 +85,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -147,11 +151,15 @@ static Key keys[] = {
 	TAGKEYS(                       		 XK_9,     		                                          8)
 	{ MODKEY|ShiftMask,            		 XK_q,     		                          quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask,		 XK_q,     		                          quit,           {1} },
-	{ MODKEY,		  		                 XK_q,			                            killclient,	{0} }, /* quit window */
-	{ MODKEY,				                   XK_n,			                            nametag,	{0} }, /* apply name to current tag */
-	{ 0,                               XF86XK_AudioMute,		                  spawn,		SHCMD("pamixer -t") }, /* mute */
-	{ 0,                               XF86XK_AudioRaiseVolume,              	spawn,		SHCMD("pamixer --allow-boost -i 3") }, /* vol up */
-	{ 0,                               XF86XK_AudioLowerVolume,              	spawn,		SHCMD("pamixer --allow-boost -d 3") }, /* vol down */
+	{ MODKEY,		  		                 XK_q,			                            killclient,	    {0} }, /* quit window */
+	{ MODKEY,				                   XK_n,			                            nametag,	      {0} }, /* apply name to current tag */
+	{ 0,                               XF86XK_AudioMute,		                  spawn,		       SHCMD("pamixer -t") }, /* mute */
+	{ 0,                               XF86XK_AudioRaiseVolume,              	spawn,		       SHCMD("pamixer --allow-boost -i 3") }, /* vol up */
+	{ 0,                               XF86XK_AudioLowerVolume,              	spawn,		       SHCMD("pamixer --allow-boost -d 3") }, /* vol down */
+	{ MODKEY,			                     XK_w,		                              spawn,		       SHCMD("$BROWSER") },
+	{ MODKEY|ShiftMask,		             XK_w,		                              spawn,		       SHCMD(TERMINAL " -e sudo nmtui") },
+	{ MODKEY,			                     XK_r,		                              spawn,		       SHCMD(TERMINAL " -e ranger") },
+	{ MODKEY|ShiftMask,		             XK_e,		                              spawn,		       SHCMD(TERMINAL " -e xstata") },
 };
 
 /* button definitions */
