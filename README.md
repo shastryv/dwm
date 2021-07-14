@@ -1,0 +1,39 @@
+# Ved's build of dwm
+
+dwm is an extremely fast, small, and dynamic window manager for X.
+
+
+## Bindings
+Custom bindings are commented in the config headers [config.def.h](config.def.h).
+
+## Patches 
+
+ - pertag: allow setting different layouts for unique tags
+ - restartsig: kill & restart dwm without logging out - useful post compilation. `super + ctrl + shift + q`
+ - sticky: set a window as sticky to all tags `super + s`
+ - xresources: compatibility with settings in .xresources
+ - nametag: allow custom text to be appended to tag numbers `super + n`
+ - fullscreen: force a window to go fullscreen and hide the statusbar `super + f`
+ - systray: a system tray implementation in dwm
+
+## Requirements
+In order to build dwm you need the Xlib header files. There should be available in your distribution's xorg package.
+
+## Installation
+
+Edit config.mk to match your local setup (dwm is installed into
+the /usr/local namespace by default).
+
+```
+git clone https://github.com/shastryv/dwm
+cd dwm
+rm config.h && sudo make clean install
+```
+
+
+## Usage
+Add the following line to your .xinitrc to start dwm using startx:
+
+```
+    exec dwm
+```
