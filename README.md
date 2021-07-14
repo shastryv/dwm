@@ -17,6 +17,8 @@ Custom bindings are commented in the config headers [config.def.h](config.def.h)
  - systray: a system tray implementation in dwm
  - bottomstack: a horizontal stack layout `super + shift + t`
  - fadeinactive: fades inactive window by reducing opacity
+ - hide\_vacant\_tags: hide tags with no windows for a cleaner bar
+ - stacker: utilities to  manage the client stack. `super` for push operations and `super+shift` for focus operations
 
 ## Requirements
 In order to build dwm you need the Xlib header files. There should be available in your distribution's xorg package.
